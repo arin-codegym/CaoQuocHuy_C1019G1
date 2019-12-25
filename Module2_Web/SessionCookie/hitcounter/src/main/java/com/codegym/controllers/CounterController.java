@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import javax.servlet.http.HttpSession;
 
 @Controller
-@SessionAttributes("counter1")
+@SessionAttributes("counter")
 public class CounterController {
 
     /* add MyCounter in model attribute */
@@ -20,10 +20,8 @@ public class CounterController {
     }
 
     @GetMapping("/")
-    public String get(@ModelAttribute("counter") MyCounter myCounter, HttpSession session) {
-
-        session.setAttribute("counter1", myCounter);
-        ((MyCounter)session.getAttribute("counter1")).increment();
+    public String get(@ModelAttribute("counter") MyCounter myCounter) {
+        myCounter.increment();
         return "index";
     }
 }

@@ -8,6 +8,6 @@
 <!--/*@thymesVar id="mycounter" type=""*/-->
 <!--/*@thymesVar id="getCount" type=""*/-->
 
-<h1 th:text="${'View count: ' + ((MyCounter) session.counter1)}"></h1>
+<h1 th:text="${'View count: ' + counter.getCount()}"></h1>
 </body>
 </html>
