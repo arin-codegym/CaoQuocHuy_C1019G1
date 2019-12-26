@@ -7,12 +7,24 @@
 <body>
 
 
-<p th:text="${product.name}"></p>
-<p th:text="${product.information}"></p>
-<p th:text="${product.price}"></p>
 <form action="chitiet.html" method="post">
+    <table border="1">
+        <tr>
+            <th>Product Name</th>
+            <th>Information</th>
+            <th>Price</th>
+            <th>Delete</th>
+        </tr>
+        <tr>
+            <th th:text="${product.name}">
+            <th th:text="${product.information}">
+            <th th:text="${product.price}">
+        </th>
+
+    </table>
+
     <input type="submit" value="Mua ngay">
 </form>
-</div>
+
 </body>
 </html>

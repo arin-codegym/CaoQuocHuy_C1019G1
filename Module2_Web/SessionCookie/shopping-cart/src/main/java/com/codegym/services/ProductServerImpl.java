@@ -37,7 +37,7 @@ public class ProductServerImpl implements ProductServer {
 
     @Override
     public Product findById(int id) {
-        return productServer.findById(id);
+        return list.get(id);
     }
 
     @Override
