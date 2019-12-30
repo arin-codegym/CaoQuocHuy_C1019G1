@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>BORAJI.COM</title>
+</head>
+<body>
+<h1>User Login</h1>
+
+<form th:action="@{/dologin}"  method="post" th:object="${user1}">
+    <table>
+        <tr>
+            <td>Email</td>
+            <td><label>
+                <input type="text" th:field="*{email}" />
+            </label></td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><label>
+                <input type="text" th:field="*{password}" />
+            </label></td>
+        </tr>
+        <tr>
+            <td><button type="submit">Login</button></td>
+        </tr>
+    </table>
+</form>
+
+<th:block th:if="${message}">
+    <h3> <p th:text="${message}"></p></h3>
+</th:block>
+</body>
+</html>

@@ -10,15 +10,17 @@
     <tr>
         <th>Product Name</th>
         <th>Price</th>
-        <th>Amount</th>
+        <th>Quantity</th>
         <th>Delete</th>
     </tr>
-    <th:block th:each="product : ${list.keySet()}">
+    <th:block th:each="idCart:${list.keySet()}">
         <tr>
-            <td th:text="${product.productName}"></td>
-            <td th:text="${product.price}"></td>
-            <td th:text="${cart.getAmount(product)}"></td>
-            <td><a th:href="@{/cart/__${product.id}__ }">Delete</a></td>
+<!--            <td th:text="${idCart}"></td>&ndash;&gt;-->
+            <td th:text="${list.get(idCart).product.name}"></td>
+            <td th:text="${#numbers.formatCurrency(list.get(idCart).product.price)}"></td>
+            <td th:text="${(list.get(idCart).quantity)}"></td>
+<!--            <td th:text="${list.get(idCart).quantity}"></td>-->
+<!--           <td><a th:href="@{/cart/__${product.id}__ }">Delete</a></td>-->
         </tr>
     </th:block>
 

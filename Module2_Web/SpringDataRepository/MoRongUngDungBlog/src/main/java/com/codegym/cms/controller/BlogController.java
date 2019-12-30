@@ -24,40 +24,6 @@ public class BlogController {
     @Autowired
     private CategoryService categoryService;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     @ModelAttribute("categories")
     public Iterable<Category> categories() {
         return categoryService.findAll();
