@@ -18,10 +18,12 @@ import java.util.Set;
 
 @Controller
 @SessionAttributes("cart")
+
 public class ProductController {
-   // private Map<Product, Integer> cart = new HashMap<>();
+    // private Map<Product, Integer> cart = new HashMap<>();
     @Autowired
     private ProductService productService;
+
 
     @ModelAttribute("cart")
     public HashMap<Long, Object> setUpUserForm() {
@@ -45,43 +47,38 @@ public class ProductController {
 
     @PostMapping("/view-product/{id}")
     public ModelAndView addCart(@PathVariable Long id, @ModelAttribute("cart") HashMap list) {
-        int quantity = 1;
-
-        HashMap<Long, Cart> listCard = new HashMap<>();
-       Cart item=new Cart();
         Product product = productService.findById(id);
-        listCard.put((long) id, item(product,item.getQuantity(item.setQuantity(1))));
-        if (listCard.containsKey((long) id)) {
-            listCard.replace((long) id,  Cart(product,quantity+=1));
-
+        if (product != null) {
+            if (list.containsKey(id)) {
+                Cart item = (Cart) list.get(id);
+                ((Cart) list.get(id)).setQuantity(((Cart) list.get(id)).getQuantity()+1);
+                // listCard.replace(id, new Cart(product, item.getQuantity() + 1));
+            } else {
+                list.put(id, new Cart(product, 1));
+            }
         }
-        list.putAll(listCard);
-       System.out.println(listCard);
+//        list.putAll(listCard);
+        System.out.println(list);
         ModelAndView modelAndView = new ModelAndView("information", "product", product);
         modelAndView.addObject("message", "add ok");
         //  modelAndView.addObject("list",cart);
-
         return modelAndView;
     }
 
     @GetMapping("/cart")
     public ModelAndView goToCart(@ModelAttribute("cart") HashMap list) {
-        double total=0;
+        double total = 0;
         Set<Long> keys = list.keySet();
-        Long[] arrayKey=keys.toArray(new Long[keys.size()]);
-        for(long idCart:arrayKey) {
-            Cart cart= (Cart) list.get(idCart);
+        Long[] arrayKey = keys.toArray(new Long[keys.size()]);
+        for (long idCart : arrayKey) {
+            Cart cart = (Cart) list.get(idCart);
             System.out.println(cart.getProduct().getName());
-//            Object value = entry.getValue();
+            total= cart.getProduct().getPrice()*cart.getQuantity();
 
-            // do what you have to do here
-            // In your case, another loop.
         }
 
-//        for ( tol:list.keySet()){
-//            total = list.get(tol)
-//        }
-        return new ModelAndView("giohang","list",list);
+
+        return new ModelAndView("giohang", "list", list);
     }
 
 }
