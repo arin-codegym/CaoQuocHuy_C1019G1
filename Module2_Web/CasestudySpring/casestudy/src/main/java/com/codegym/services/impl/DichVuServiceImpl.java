@@ -18,8 +18,8 @@ public class DichVuServiceImpl implements DichVuService {
     }
 
     @Override
-    public Optional<FuramaDichVu> getDichVu(Long idDichVu) {
-        return dichVuRepositoty.findById(idDichVu);
+    public FuramaDichVu getDichVu(Long idDichVu) {
+        return dichVuRepositoty.findById(idDichVu).orElse(null);
     }
 
     @Override
@@ -30,5 +30,9 @@ public class DichVuServiceImpl implements DichVuService {
     @Override
     public void deleteDichVu(Long idDichVu) {
         dichVuRepositoty.deleteById(idDichVu);
+    }
+    @Override
+    public Iterable<FuramaDichVu> findAllByChiPhiThueBetween(Double fromPrice, Double toPrice) {
+        return dichVuRepositoty.findAllByChiPhiThueBetween(fromPrice,toPrice);
     }
 }

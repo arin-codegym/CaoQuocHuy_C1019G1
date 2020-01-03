@@ -8,7 +8,8 @@ import java.util.Optional;
 
 public interface DichVuService {
     public Iterable<FuramaDichVu> getAllDichVu();
-    public Optional<FuramaDichVu> getDichVu(Long idDichVu);
+    public FuramaDichVu getDichVu(Long idDichVu);
     public void saveDichVu(FuramaDichVu dichVu);
     void deleteDichVu(Long idDichVu);
+    public Iterable<FuramaDichVu> findAllByChiPhiThueBetween(Double fromPrice, Double toPrice);
 }

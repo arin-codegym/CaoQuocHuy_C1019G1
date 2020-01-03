@@ -67,16 +67,16 @@ public class ProductController {
 
     @GetMapping("/cart")
     public ModelAndView goToCart(@ModelAttribute("cart") HashMap list) {
-        double total = 0;
-        Set<Long> keys = list.keySet();
-        Long[] arrayKey = keys.toArray(new Long[keys.size()]);
-        for (long idCart : arrayKey) {
-            Cart cart = (Cart) list.get(idCart);
-            System.out.println(cart.getProduct().getName());
-            total= cart.getProduct().getPrice()*cart.getQuantity();
-
-        }
-
+//        double total = 0;
+//        Set<Long> keys = list.keySet();
+//        Long[] arrayKey = keys.toArray(new Long[keys.size()]);
+//        for (long idCart : arrayKey) {
+//            Cart cart = (Cart) list.get(idCart);
+//            System.out.println(cart.getProduct().getName());
+//            total= cart.getProduct().getPrice()*cart.getQuantity();
+//
+//        }
+//
 
         return new ModelAndView("giohang", "list", list);
     }

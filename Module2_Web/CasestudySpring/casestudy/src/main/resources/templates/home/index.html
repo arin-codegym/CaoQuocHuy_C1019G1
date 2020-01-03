@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Bootstrap Example</title>
     <meta charset="utf-8">
@@ -74,6 +75,34 @@
         </div>
     </div>
 </nav>
+<!--       Search-->
+<div class="container-fluid mt-5 py-3 " style="background-color: #e0e0e0">
+    <div class="row d-flex flex-column justify-content-center align-items-center my-3 ">
+        <div class="my-3">
+            <h4>Search Theo Khoảng Giá --></h4>
+        </div>
+        <form action="/" class="d-flex">
+            <select name="fromPrice" class="form-control mr-3" style="width: 300px;">
+                <option value="20">20 USD</option>
+                <option value="50">50 USD</option>
+                <option value="100">100 USD</option>
+                <option value="200">200 USD</option>
+                <option value="500">500 USD</option>
+                <option value="1000">1000 USD</option>
+            </select>
+            <select name="toPrice" class="form-control mr-3" style="width: 300px;">
+                <option value="20">20 USD</option>
+                <option value="50">50 USD</option>
+                <option value="100">100 USD</option>
+                <option value="300">300 USD</option>
+                <option value="200">200 USD</option>
+                <option value="500">500 USD</option>
+                <option value="1000">1000 USD</option>
+            </select>
+            <input type="submit" class="btn btn-primary" value="Search" style="width: 150px">
+        </form>
+    </div>
+</div>
 
 <div class="container-fluid text-center">
     <div class="row content">
@@ -82,18 +111,18 @@
             <p><a href="#">House</a></p>
             <p><a href="#">Room</a></p>
         </div>
-        <div class="col-sm-8 text-left" th:each="dichvu:${listDichVu}">
-            <img th:src="@{${dichvu.image}}">
+
+        <div class="col-sm-10 text-area" th:each="dichvu:${listDichVu}">
+            <img th:src="@{${dichvu.image}}" width="360" height="242">
             <h1 th:text="${dichvu.tenDichVu}"></h1>
-        </div>
-        <div class="col-sm-2 sidenav">
-            <div class="well">
-                <p>ADS</p>
-            </div>
-            <div class="well">
-                <p>ADS</p>
+            <h3 th:text="${dichvu.dienTich}+'m2'"></h3>
+            <div>
+                <a th:href="@{'/dichvu/'+${dichvu.id}}">Chi tiet</a>
+                <br>
+                <a th:href="@{'/booking/'+${dichvu.id}}">Booking</a>
             </div>
         </div>
+
     </div>
 </div>
 
