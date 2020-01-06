@@ -1,12 +1,14 @@
 package com.codegym.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "dichvu")
 public class FuramaDichVu {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long id;
 
     @Column(name = "tendichvu")
@@ -56,6 +58,18 @@ public class FuramaDichVu {
     public String getTenDichVu() {
         return tenDichVu;
     }
+
+    public List<FuramaDichVu> getFuramaDichVus() {
+        return furamaDichVus;
+    }
+
+    public void setFuramaDichVus(List<FuramaDichVu> furamaDichVus) {
+        this.furamaDichVus = furamaDichVus;
+    }
+
+    @OneToMany(targetEntity = FuramaHopDong.class)
+
+    private List<FuramaDichVu> furamaDichVus;
 
     public void setTenDichVu(String tenDichVu) {
         this.tenDichVu = tenDichVu;

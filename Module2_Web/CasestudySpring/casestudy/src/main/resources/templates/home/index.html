@@ -61,16 +61,16 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
+                <li class="active"><a href="/">Home</a></li>
                 <li><a href="#">Dịch vụ</a></li>
                 <li><a href="#">Tìm kiếm</a></li>
                 <li><a href="#">Review</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Đăng Nhập</a></li>
+                <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Đăng Nhập</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Đăng Ký</a></li>
+                <li><a href="dangkykhachhang"><span class="glyphicon glyphicon-log-in"></span> Đăng Ký</a></li>
             </ul>
         </div>
     </div>
@@ -120,6 +120,7 @@
                 <a th:href="@{'/dichvu/'+${dichvu.id}}">Chi tiet</a>
                 <br>
                 <a th:href="@{'/booking/'+${dichvu.id}}">Booking</a>
+                <a th:href="@{'/favorite/' + ${dichvu.getId()}}">Favorite</a>
             </div>
         </div>
 
